@@ -1,10 +1,6 @@
-FROM ubuntu:14.04
-MAINTAINER sunrise
-LABEL "purpose"="webserver practice"
-RUN apt-get update
-RUN apt-get install apache2 -y
+FROM ubuntu:latest
+RUN apt-get update && apt-get install -y nginx
 ADD test.html /var/www/html
-WORKDIR /var/www/html
-RUN ["/bin/bash", "-c", "echo hello >> test.html"]
+COPY ./index.html /usr/share/nginx/html/
 EXPOSE 80
-CMD apachectl -D FOREGROUND
+CMD ["nginx","-g","daemon off;"]
