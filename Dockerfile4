@@ -3,7 +3,7 @@ MAINTAINER "sunrise"
 LABEL "purpose"="static web service"
 RUN apt-get update
 RUN apt-get install -y apache2
-ADD ./index1.html /var/www/html
+COPY ./index1.html /var/www/html/index.html
 ADD ./script.js /var/www/html
 ADD ./style.css /var/www/html
 WORKDIR /var/www/html
